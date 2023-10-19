@@ -53,6 +53,12 @@ abline(model1, col="red")
 
 The red line in the data shows the best linear fit.For an increase of 1 in arm strength,sim score increases by 0.0545
 
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(model1, newdata, interval='prediction')
+```
+
+
 ## Model2
 find an equation that expresses SIMS as a fuction of GRIP
 
@@ -89,3 +95,35 @@ abline(model2, col="blue")
 ```
 
 The red lines represents the best linear fit.For an increase of 1 in grip strength, SIMS score increases by 0.0454.
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(model2, newdata, interval="prediction")
+
+```
+
+## Model3
+
+Find an equation that expresses SIMS as a fuction of ARM+GRIP.
+
+## Results
+
+### Graphical Results
+
+There are no graphical results for model 3 because I can't put two variables on one axis.
+
+### Numerical Results
+There are no numerical results since we have SIMS as a function of two variables
+
+### Inference
+
+```{r}
+model.3 <- lm(SIMS~ARM+GRIP,data=data)
+summary.lm(model.3)
+```
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(model.3, newdata, interval="prediction")
+
+```

@@ -15,35 +15,77 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 ```
 
 
-##Model1
+## Model1
 find an equation that expresses SIMS as a fuction of ARM 
 
+## Results
+
+### Graphical Results
 
 ```{r}
-Model1=lm(SIMS~ARM,data=data)
-print(summary(Model1))
+plot(SIMS~ARM,data=data)
 ```
+
+As the ARM strength increases , the SIMS score also increases.There is a positive trend between ARM strength and SIMS score, not a perfect relationship.
+
+### Numerical Results
 
 ```{r}
-plot(data$SIMS,data$ARM)
+cor(data$SIMS,data$ARM)
 ```
 
-## R Markdown
+We have a positive correlation , with noise.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### Inference
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+model1 <- lm(SIMS~ARM,data=data)
+plot(data$SIMS~data$ARM)
+abline(model1, col="red")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The red line in the data shows the best linear fit.For an increase of 1 in arm strength,sim score increases by 0.0545
+
+## Model2
+find an equation that expresses SIMS as a fuction of GRIP
+
+## Results
+
+### Graphical Results
+
+```{r}
+plot(SIMS~GRIP,data=data)
+```
+
+When the GRIP strength increases , the SIMS score also increases.There's a positive trend between GRIP strength and SIMS score but it is not a perfect relationship.
+
+### Numerical Results
+
+```{r}
+cor(data$SIMS,data$GRIP)
+```
+We have a positive correlation, with noise.
+
+### Inference
+
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+```
+
+
+
+```{r}
+model2 <- lm(SIMS~GRIP,data=data)
+plot(data$SIMS~data$GRIP)
+abline(model2, col="blue")
+```
+
+The red lines represents the best linear fit.For an increase of 1 in grip strength, SIMS score increases by 0.0454.
